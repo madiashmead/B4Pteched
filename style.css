@@ -1,0 +1,149 @@
+:root {
+  --bg: #f7f7fb;
+  --surface: #ffffff;
+  --text: #1d1d2b;
+  --muted: #5b5b70;
+  --accent: #5b4bff;
+  --accent-soft: #ecebff;
+  --border: #e3e3ee;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12121a;
+    --surface: #1c1c28;
+    --text: #ececf4;
+    --muted: #a3a3b8;
+    --accent: #8b7fff;
+    --accent-soft: #2a2745;
+    --border: #2e2e40;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 1rem 3rem;
+  background: linear-gradient(135deg, var(--accent), #b04bff);
+  color: #fff;
+}
+
+.hero h1 {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2rem, 6vw, 3.25rem);
+}
+
+.tagline {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  opacity: 0.95;
+}
+
+main {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+section { margin-bottom: 3rem; }
+
+h2 { margin-bottom: 0.5rem; }
+
+.hint { color: var(--muted); margin-top: 0; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent);
+  outline: none;
+}
+
+.card .icon { font-size: 2rem; }
+
+.card h3 { margin: 0.5rem 0 0.25rem; }
+
+.card p { margin: 0; color: var(--muted); }
+
+.card .more {
+  display: none;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+}
+
+.card.open { background: var(--accent-soft); border-color: var(--accent); }
+.card.open .more { display: block; }
+
+.steps ol {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.steps li {
+  counter-increment: step;
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1rem 1rem 1rem 4rem;
+}
+
+.steps li::before {
+  content: counter(step);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: bold;
+}
+
+.step-title { display: block; font-weight: bold; }
+
+.limits ul { padding-left: 1.25rem; }
+.limits li { margin-bottom: 0.4rem; }
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+}
